@@ -1,7 +1,8 @@
+import { Loader2 } from 'lucide-react';
+
 import { useGetMyUser, useUpdateMyUser } from '@/api/MyUserApi';
 
 import UserProfileForm from '@/forms/user-profile-form/UserProfileForm';
-import { Loader2 } from 'lucide-react';
 
 const UserProfilePage = () => {
   const { currentUser, isLoading: isGetLoading } = useGetMyUser();
