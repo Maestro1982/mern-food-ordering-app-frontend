@@ -27,7 +27,7 @@ export const useGetMyUser = () => {
     return response.json();
   };
 
-  // Handled by react-query => useQuery()
+  // Handled by react-query = useQuery() function
   const {
     data: currentUser,
     isLoading,
@@ -38,10 +38,7 @@ export const useGetMyUser = () => {
     toast.error(error.toString());
   }
 
-  return {
-    currentUser,
-    isLoading,
-  };
+  return { currentUser, isLoading };
 };
 
 type CreateUserRequest = {
