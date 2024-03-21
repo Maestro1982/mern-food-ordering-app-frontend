@@ -1,9 +1,10 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { Form } from '@/components/ui/form';
+import { Restaurant } from '@/types';
 
 import DetailsSection from '@/forms/manage-restaurant-form/DetailsSection';
 import CuisinesSection from '@/forms/manage-restaurant-form/CuisinesSection';
@@ -12,6 +13,7 @@ import ImageSection from '@/forms/manage-restaurant-form/ImageSection';
 
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
 
 import LoadingButton from '@/components/LoadingButton';
 
@@ -48,11 +50,12 @@ const formSchema = z.object({
 type RestaurantFormData = z.infer<typeof formSchema>;
 
 type Props = {
+  restaurant?: Restaurant;
   onSave: (restaurantFormData: FormData) => void;
   isLoading: boolean;
 };
 
-const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
+const ManageRestaurantForm = ({ restaurant, onSave, isLoading }: Props) => {
   const form = useForm<RestaurantFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,6 +63,29 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
       menuItems: [{ name: '', price: 0 }],
     },
   });
+
+  useEffect(() => {
+    if (!restaurant) {
+      return;
+    }
+
+    const deliveryPriceFormatted = parseFloat(
+      (restaurant.deliveryPrice / 100).toFixed(2)
+    );
+
+    const menuItemsFormatted = restaurant.menuItems.map((item) => ({
+      ...item,
+      price: parseFloat((item.price / 100).toFixed(2)),
+    }));
+
+    const updatedRestaurant = {
+      ...restaurant,
+      deliveryPrice: deliveryPriceFormatted,
+      menuItems: menuItemsFormatted,
+    };
+
+    form.reset(updatedRestaurant);
+  }, [form, restaurant]);
 
   /* When submitting: getting all the formData in plain old javascript object
      to convert it to multipart/form-data */
