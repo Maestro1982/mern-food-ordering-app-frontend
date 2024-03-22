@@ -1,3 +1,5 @@
+import { LogIn } from 'lucide-react';
+
 import { useAuth0 } from '@auth0/auth0-react';
 
 import { Button } from '@/components/ui/button';
@@ -13,10 +15,10 @@ const MainNav = () => {
       ) : (
         <Button
           variant='ghost'
-          className='font-bold text-lg hover:text-orange-500 hover:bg-white'
+          className='font-bold text-lg hover:text-orange-500 hover:bg-white '
           onClick={async () => await loginWithRedirect()}
         >
-          Login
+          <LogIn className='w-4 h-4 mt-0.5 mr-2' /> Login
         </Button>
       )}
     </span>

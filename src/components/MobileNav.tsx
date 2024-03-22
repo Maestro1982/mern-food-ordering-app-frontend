@@ -1,5 +1,6 @@
-import { useAuth0 } from '@auth0/auth0-react';
 import { CircleUserRound, Menu } from 'lucide-react';
+
+import { useAuth0 } from '@auth0/auth0-react';
 
 import {
   Sheet,
