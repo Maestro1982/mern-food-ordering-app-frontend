@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -31,6 +32,10 @@ const Searchbar = ({ onSubmit, placeholder, onReset, searchQuery }: Props) => {
     },
   });
 
+  useEffect(() => {
+    form.reset({ searchQuery });
+  }, [form, searchQuery]);
+
   const handleReset = () => {
     form.reset({
       searchQuery: '',
@@ -45,7 +50,7 @@ const Searchbar = ({ onSubmit, placeholder, onReset, searchQuery }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={`flex flex-1 items-center gap-3 justify-between flex-row border-2 rounded-full p-3 mx-5 ${
+        className={`flex flex-1 items-center gap-3 justify-between flex-row border-2 rounded-full p-3 ${
           form.formState.errors.searchQuery && 'border-red-500'
         }`}
       >
@@ -69,16 +74,16 @@ const Searchbar = ({ onSubmit, placeholder, onReset, searchQuery }: Props) => {
             </FormItem>
           )}
         />
-        {form.formState.isDirty && (
-          <Button
-            onClick={handleReset}
-            type='button'
-            variant='outline'
-            className='rounded-full'
-          >
-            Clear
-          </Button>
-        )}
+
+        <Button
+          onClick={handleReset}
+          type='button'
+          variant='outline'
+          className='rounded-full'
+        >
+          Reset
+        </Button>
+
         <Button type='submit' className='bg-orange-500 rounded-full'>
           Search
         </Button>
