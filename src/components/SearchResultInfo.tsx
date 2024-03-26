@@ -6,10 +6,12 @@ type Props = {
 };
 
 const SearchResultInfo = ({ total, city }: Props) => {
+  const restaurantText = total === 1 ? 'Restaurant' : 'Restaurants';
+
   return (
     <div className='text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row'>
       <span>
-        {total} restaurants found in {city}
+        {total} {total === 0 ? 'Restaurants' : restaurantText} found in {city}
         <Link
           to='/'
           className='ml-1 text-sm font-semibold underline cursor-pointer text-blue-500'
@@ -17,7 +19,6 @@ const SearchResultInfo = ({ total, city }: Props) => {
           Change Location
         </Link>
       </span>
-      Insert dropdown menu here
     </div>
   );
 };
