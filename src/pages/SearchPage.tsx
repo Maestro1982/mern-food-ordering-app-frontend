@@ -71,9 +71,9 @@ const SearchPage = () => {
   };
 
   if (isLoading) {
-    <span>
-      <Loader2 className='w-8 h-8 animate-spin' />
-    </span>;
+    <div className='flex items-center justify-center mt-[25%]'>
+      <Loader2 className='w-10 h-10 animate-spin' />
+    </div>;
   }
 
   if (!results?.data || !city) {
