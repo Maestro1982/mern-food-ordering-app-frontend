@@ -8,6 +8,7 @@ import UserProfilePage from '@/pages/UserProfilePage';
 import ManageRestaurantPage from '@/pages/ManageRestaurantPage';
 import SearchPage from '@/pages/SearchPage';
 import DetailPage from '@/pages/DetailPage';
+import OrderStatusPage from './pages/OrderStatusPage';
 
 import ProtectedRoute from '@/auth/ProtectedRoute';
 
@@ -40,6 +41,14 @@ const AppRoutes = () => {
         }
       />
       <Route element={<ProtectedRoute />}>
+        <Route
+          path='/order-status'
+          element={
+            <Layout>
+              <OrderStatusPage />
+            </Layout>
+          }
+        />
         <Route
           path='/user-profile'
           element={
