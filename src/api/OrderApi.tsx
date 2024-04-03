@@ -14,7 +14,7 @@ export const useGetMyOrders = () => {
 
     const response = await fetch(`${API_BASE_URL}/api/order`, {
       headers: {
-        authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${accessToken}`,
       },
     });
 
@@ -64,7 +64,7 @@ export const useCreateCheckoutSession = () => {
       {
         method: 'POST',
         headers: {
-          authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(checkoutSessionRequest),
