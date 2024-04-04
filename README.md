@@ -11,3 +11,7 @@
 
 - use for the card number repeadtly 42 till end
 - expire date and CC you can choose random ( must be higher than current date)
+
+# Data in MongoDB
+
+- Cities for search Restaurants (Temse, St-Niklaas, Brussel, Gent, Antwerpen)
