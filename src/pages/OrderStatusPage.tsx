@@ -12,7 +12,7 @@ const OrderStatusPage = () => {
 
   if (isLoading) {
     return (
-      <div className='flex items-center justify-center mt-[25%]'>
+      <div className='flex items-center justify-center mt-[15%]'>
         <Loader2 className='w-10 h-10 animate-spin' />
       </div>
     );
